@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toma de Asistencias</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <h3 style="width: 270px;">DCyT 28/10/2025</h3>
+    <h3 style="width: 270px;">PARCIAL Nº2</h3>
+    <section id="infoParcial">
+        <label><b>Cédula:</b>
+            <input type="number" id="infoParcial_inCedulaBuscar" />
+        </label>
+        <div>
+            <button id="infoParcial_btCedula1"></button>
+            <span id="infoParcial_lblEstudiante1"></span>
+        </div>
+        <div>
+            <button id="infoParcial_btCedula2"></button>
+            <span id="infoParcial_lblEstudiante2"></span>
+        </div>
+        <div>
+            <button id="infoParcial_btCedula3"></button>
+            <span id="infoParcial_lblEstudiante3"></span>
+        </div>
+        <div>
+            <button id="infoParcial_btCedula4"></button>
+            <span id="infoParcial_lblEstudiante4"></span>
+        </div>
+        <div>
+            <button id="infoParcial_btCedula5"></button>
+            <span id="infoParcial_lblEstudiante5"></span>
+        </div>
+    </section>
+    <section>
+        <h3>Registrados</h3>
+        <div id="infoParcial_divRegistrados"></div>
+    </section>
+    <script type="module">
+        import Cl_index from "./dist/Cl_index.js";
+        new Cl_index()
+    </script>
+</body>
+
+</html>
