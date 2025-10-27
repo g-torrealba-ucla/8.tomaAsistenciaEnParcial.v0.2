@@ -12,9 +12,15 @@ export default class Cl_controlador {
             callback,
         });
     }
+    eliminarEstudiante({ cedula, callback, }) {
+        this.modelo.eliminarEstudiante({
+            estudiante: this.estudiante(cedula),
+            callback,
+        });
+    }
     estudiante(cedula) {
         if (!cedula)
-            return undefined;
+            return null;
         return this.modelo.estudiante(cedula);
     }
     buscarCedulaParcial(cedula) {
@@ -23,8 +29,7 @@ export default class Cl_controlador {
             return estudiantes;
         for (let index = 0; index < this.modelo.parcial.length; index++) {
             let estudiante = this.modelo.parcial[index];
-            if (!this.modelo.parcial[index].id &&
-                estudiante.tieneCedulaParcial(cedula)) {
+            if (estudiante.tieneCedulaParcial(cedula)) {
                 estudiantes.push(estudiante.toJSON());
                 if (estudiantes.length === 5)
                     break;

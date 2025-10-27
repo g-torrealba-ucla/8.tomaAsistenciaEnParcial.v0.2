@@ -6,6 +6,11 @@ interface iResultObjects {
   objects: [iEstudiante] | null;
   error: string | false;
 }
+interface iResultEditObject {
+  objects: [iEstudiante] | null;
+  error: string | false;
+}
+
 export interface iGrabarEstudiante {
   estudiante: Cl_mEstudiante;
   callback: Function;
@@ -19,14 +24,10 @@ export default class Cl_mParcial {
   constructor() {
     this.db = new Cl_dcytDb({ aliasCuenta: "PROFESOR" });
     this.parcial = [];
-    dtEstudiantes.map((estudiante) =>
-      this.parcial.push(new Cl_mEstudiante(estudiante))
-    );
   }
-  estudiante(cedula: number): Cl_mEstudiante | undefined {
+  estudiante(cedula: number): Cl_mEstudiante | null {
     return (
-      this.parcial.find((estudiante) => estudiante.cedula === cedula) ||
-      undefined
+      this.parcial.find((estudiante) => estudiante.cedula === cedula) || null
     );
   }
   grabarEstudiante({ estudiante, callback }: iGrabarEstudiante): void {
@@ -34,6 +35,24 @@ export default class Cl_mParcial {
       tabla: this.tbEstudiante,
       object: estudiante.toJSON(),
       callback: ({ id, objects, error }) => {
+        if (error) throw new Error(error);
+        this.setParcial(objects);
+        callback?.(error);
+      },
+    });
+  }
+  eliminarEstudiante({
+    estudiante,
+    callback,
+  }: {
+    estudiante: Cl_mEstudiante | null;
+    callback: Function;
+  }) {
+    if (!estudiante) return;
+    this.db.deleteRecord({
+      tabla: this.tbEstudiante,
+      object: estudiante.toJSON(),
+      callback: ({ objects, error }) => {
         if (error) throw new Error(error);
         this.setParcial(objects);
         callback?.(error);
@@ -53,6 +72,10 @@ export default class Cl_mParcial {
     });
   }
   setParcial(objects: iEstudiante[] | null) {
+    this.parcial = [];
+    dtEstudiantes.map((estudiante) =>
+      this.parcial.push(new Cl_mEstudiante(estudiante))
+    );
     objects?.map((estudiante) => {
       let index = this.parcial.findIndex((e) => e.cedula === estudiante.cedula);
       if (index >= 0) this.parcial[index] = new Cl_mEstudiante(estudiante);

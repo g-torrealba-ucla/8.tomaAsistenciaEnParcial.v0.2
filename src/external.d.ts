@@ -20,8 +20,18 @@ declare module "https://gtplus.net/forms2/dcytDb/api/Cl_dcytDb.php?v2" {
       callback,
     }: {
       tabla: string;
-      object: {};
-      callback: ({ object, error }: iResultObject) => void;
+      object: { id: number | null };
+      callback: ({ objects, error }: iResultEditObject) => void;
+    }) {}
+
+    deleteRecord({
+      tabla,
+      object,
+      callback,
+    }: {
+      tabla: string;
+      object: { id: number | null };
+      callback: ({ objects, error }: iResultEditObject) => void;
     }) {}
 
     listRecords({

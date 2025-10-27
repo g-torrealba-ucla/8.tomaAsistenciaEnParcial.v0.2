@@ -7,17 +7,29 @@ export default class Cl_mParcial {
         this.evaluacionTerminada = true;
         this.db = new Cl_dcytDb({ aliasCuenta: "PROFESOR" });
         this.parcial = [];
-        dtEstudiantes.map((estudiante) => this.parcial.push(new Cl_mEstudiante(estudiante)));
     }
     estudiante(cedula) {
-        return (this.parcial.find((estudiante) => estudiante.cedula === cedula) ||
-            undefined);
+        return (this.parcial.find((estudiante) => estudiante.cedula === cedula) || null);
     }
     grabarEstudiante({ estudiante, callback }) {
         this.db.addRecord({
             tabla: this.tbEstudiante,
             object: estudiante.toJSON(),
             callback: ({ id, objects, error }) => {
+                if (error)
+                    throw new Error(error);
+                this.setParcial(objects);
+                callback === null || callback === void 0 ? void 0 : callback(error);
+            },
+        });
+    }
+    eliminarEstudiante({ estudiante, callback, }) {
+        if (!estudiante)
+            return;
+        this.db.deleteRecord({
+            tabla: this.tbEstudiante,
+            object: estudiante.toJSON(),
+            callback: ({ objects, error }) => {
                 if (error)
                     throw new Error(error);
                 this.setParcial(objects);
@@ -39,6 +51,8 @@ export default class Cl_mParcial {
         });
     }
     setParcial(objects) {
+        this.parcial = [];
+        dtEstudiantes.map((estudiante) => this.parcial.push(new Cl_mEstudiante(estudiante)));
         objects === null || objects === void 0 ? void 0 : objects.map((estudiante) => {
             let index = this.parcial.findIndex((e) => e.cedula === estudiante.cedula);
             if (index >= 0)
