@@ -11,6 +11,7 @@ export default class Cl_index {
       let vista = new Cl_vActividades();
       let controlador = new Cl_controlador(modelo, vista);
       vista.controlador = controlador;
+      vista.refresh();
     });
   }
 }

@@ -1,6 +1,7 @@
 import Cl_dcytDb from "https://gtplus.net/forms2/dcytDb/api/Cl_dcytDb.php?v2";
 import { iEstudiante } from "./Cl_mEstudiante.js";
 import Cl_mEstudiante from "./Cl_mEstudiante.js";
+import { dtEstudiantes } from "./data/dtEstudiantes.js";
 interface iResultObjects {
   objects: [iEstudiante] | null;
   error: string | false;
@@ -18,6 +19,9 @@ export default class Cl_mParcial {
   constructor() {
     this.db = new Cl_dcytDb({ aliasCuenta: "PROFESOR" });
     this.parcial = [];
+    dtEstudiantes.map((estudiante) =>
+      this.parcial.push(new Cl_mEstudiante(estudiante))
+    );
   }
   estudiante(cedula: number): Cl_mEstudiante | undefined {
     return (
@@ -48,9 +52,10 @@ export default class Cl_mParcial {
       },
     });
   }
-  setParcial(parcial: iEstudiante[] | null) {
-    parcial?.map((estudiante) => {
-      this.parcial.push(new Cl_mEstudiante(estudiante));
+  setParcial(objects: iEstudiante[] | null) {
+    objects?.map((estudiante) => {
+      let index = this.parcial.findIndex((e) => e.cedula === estudiante.cedula);
+      if (index >= 0) this.parcial[index] = new Cl_mEstudiante(estudiante);
     });
   }
 }

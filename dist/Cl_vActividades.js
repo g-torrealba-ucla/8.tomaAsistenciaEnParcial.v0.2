@@ -3,7 +3,7 @@ import Cl_vGeneral, { tHTMLElement } from "./Cl_vGeneral.js";
 export default class Cl_vActividades extends Cl_vGeneral {
   constructor() {
     var _a;
-    super({ formName: "infoEquipo" });
+    super({ formName: "infoParcial" });
     this.actividad = null;
     this.selActividad = this.crearHTMLSelectElement("selActividad", {
       elementsSource:

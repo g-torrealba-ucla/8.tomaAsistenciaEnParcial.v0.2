@@ -9,36 +9,38 @@
 </head>
 
 <body>
-    <h3 style="width: 270px;">DCyT 28/10/2025</h3>
-    <h3 style="width: 270px;">PARCIAL Nº2</h3>
+    <h3 style="width: 300px;">DCyT 28/10/2025</h3>
+    <h3 style="width: 300px;">PARCIAL Nº2</h3>
     <section id="infoParcial">
         <label><b>Cédula:</b>
             <input type="number" id="infoParcial_inCedulaBuscar" />
         </label>
         <div>
             <button id="infoParcial_btCedula1"></button>
-            <span id="infoParcial_lblEstudiante1"></span>
+            <span class="spanInfo" id="infoParcial_lblEstudiante1"></span>
         </div>
         <div>
             <button id="infoParcial_btCedula2"></button>
-            <span id="infoParcial_lblEstudiante2"></span>
+            <span class="spanInfo" id="infoParcial_lblEstudiante2"></span>
         </div>
         <div>
             <button id="infoParcial_btCedula3"></button>
-            <span id="infoParcial_lblEstudiante3"></span>
+            <span class="spanInfo" id="infoParcial_lblEstudiante3"></span>
         </div>
         <div>
             <button id="infoParcial_btCedula4"></button>
-            <span id="infoParcial_lblEstudiante4"></span>
+            <span class="spanInfo" id="infoParcial_lblEstudiante4"></span>
         </div>
         <div>
             <button id="infoParcial_btCedula5"></button>
-            <span id="infoParcial_lblEstudiante5"></span>
+            <span class="spanInfo" id="infoParcial_lblEstudiante5"></span>
         </div>
     </section>
-    <section>
+    <section style="width: 280px;font-size: 10px;">
         <h3>Registrados</h3>
-        <div id="infoParcial_divRegistrados"></div>
+        <ul style="margin-left: -30px;">
+            <div id="infoParcial_divRegistrados"></div>
+        </ul>
     </section>
     <script type="module">
         import Cl_index from "./dist/Cl_index.js";

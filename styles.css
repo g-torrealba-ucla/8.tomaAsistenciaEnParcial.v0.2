@@ -27,6 +27,7 @@ button {
   color: white;
   border-radius: 1cap;
   padding: 5px;
+  font-size: 10px;
 }
 input {
   width: 80px;
@@ -41,7 +42,7 @@ td {
   display: flex;
   flex-direction: column;
   align-items: start;
-  width: 250px;
+  width: 280px;
 }
 #mainForm {
   display: flex;
@@ -58,4 +59,9 @@ td {
 .divSalida {
   display: flex;
   flex-direction: column;
+}
+.spanInfo {
+  font-size: 10px;
+  font-style: italic;
+  color: rgb(0, 0, 0)
 }

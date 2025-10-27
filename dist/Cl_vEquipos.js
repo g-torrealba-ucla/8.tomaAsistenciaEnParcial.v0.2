@@ -3,7 +3,7 @@ import { dtEstudiantes } from "./data/dtEstudiantes.js";
 import { copyToClipboard } from "./tools/string.tools.js";
 export default class Cl_vEquipos extends Cl_vGeneral {
   constructor() {
-    super({ formName: "infoEquipo" });
+    super({ formName: "infoParcial" });
     this.equipo = null;
     this.selEquipo = this.crearHTMLSelectElement("selEquipo", {
       elementsSource: dtEstudiantes,

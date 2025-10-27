@@ -1,5 +1,6 @@
 export interface iEstudiante {
   id: number | null;
+  creadoEl: string | null;
   numero: number;
   cedula: number;
   nombre: string;
@@ -9,6 +10,7 @@ export interface iEstudiante {
 }
 export default class Cl_mEstudiante {
   private _id: number | null = null;
+  private _creadoEl: string | null = null;
   private _numero: number = 0;
   private _cedula: number = 0;
   private _nombre: string = "";
@@ -18,6 +20,7 @@ export default class Cl_mEstudiante {
   constructor(
     {
       id = 0,
+      creadoEl = null,
       numero = 0,
       cedula = 0,
       nombre = "",
@@ -26,6 +29,7 @@ export default class Cl_mEstudiante {
       profesor = "",
     }: iEstudiante = {
       id: 0,
+      creadoEl: null,
       numero: 0,
       cedula: 0,
       nombre: "",
@@ -35,6 +39,7 @@ export default class Cl_mEstudiante {
     }
   ) {
     this.id = id;
+    this.creadoEl = creadoEl;
     this.numero = numero;
     this.cedula = cedula;
     this.nombre = nombre;
@@ -47,6 +52,12 @@ export default class Cl_mEstudiante {
   }
   get id() {
     return this._id;
+  }
+  set creadoEl(creadoEl: string | null) {
+    this._creadoEl = creadoEl;
+  }
+  get creadoEl() {
+    return this._creadoEl;
   }
   set numero(numero: number) {
     this._numero = +numero;
@@ -90,6 +101,7 @@ export default class Cl_mEstudiante {
   toJSON() {
     return {
       id: this._id,
+      creadoEl: this._creadoEl,
       numero: this._numero,
       cedula: this._cedula,
       nombre: this._nombre,
