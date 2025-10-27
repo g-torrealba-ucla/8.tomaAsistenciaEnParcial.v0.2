@@ -12,13 +12,14 @@ export default class Cl_mParcial {
         return (this.parcial.find((estudiante) => estudiante.cedula === cedula) || null);
     }
     grabarEstudiante({ estudiante, callback }) {
+        if (!estudiante || estudiante.id)
+            callback === null || callback === void 0 ? void 0 : callback("El estudiante ya existe");
         this.db.addRecord({
             tabla: this.tbEstudiante,
             object: estudiante.toJSON(),
             callback: ({ id, objects, error }) => {
-                if (error)
-                    throw new Error(error);
-                this.setParcial(objects);
+                if (!error)
+                    this.setParcial(objects);
                 callback === null || callback === void 0 ? void 0 : callback(error);
             },
         });

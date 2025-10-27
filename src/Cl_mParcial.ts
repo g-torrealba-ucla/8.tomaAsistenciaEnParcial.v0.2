@@ -31,12 +31,12 @@ export default class Cl_mParcial {
     );
   }
   grabarEstudiante({ estudiante, callback }: iGrabarEstudiante): void {
+    if (!estudiante || estudiante.id) callback?.("El estudiante ya existe");
     this.db.addRecord({
       tabla: this.tbEstudiante,
       object: estudiante.toJSON(),
       callback: ({ id, objects, error }) => {
-        if (error) throw new Error(error);
-        this.setParcial(objects);
+        if (!error) this.setParcial(objects);
         callback?.(error);
       },
     });

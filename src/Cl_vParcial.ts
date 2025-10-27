@@ -38,6 +38,7 @@ export default class Cl_vEquipos extends Cl_vGeneral {
     });
     this.btCedula1 = this.crearHTMLButtonElement("btCedula1", {
       onclick: () => this.grabarEstudiante(+this.btCedula1.innerHTML),
+      refresh: () => (this.btCedula1.disabled = Boolean(this.estudiante1?.id)),
     }) as HTMLButtonElement;
     this.btEliminar1 = this.crearHTMLButtonElement("btEliminar1", {
       onclick: () => this.eliminarEstudiante(+this.btCedula1.innerHTML),
@@ -52,6 +53,7 @@ export default class Cl_vEquipos extends Cl_vGeneral {
     }) as HTMLLabelElement;
     this.btCedula2 = this.crearHTMLButtonElement("btCedula2", {
       onclick: () => this.grabarEstudiante(+this.btCedula2.innerHTML),
+      refresh: () => (this.btCedula2.disabled = Boolean(this.estudiante2?.id)),
     });
     this.btEliminar2 = this.crearHTMLButtonElement("btEliminar2", {
       onclick: () => this.eliminarEstudiante(+this.btCedula2.innerHTML),
@@ -66,6 +68,7 @@ export default class Cl_vEquipos extends Cl_vGeneral {
     }) as HTMLLabelElement;
     this.btCedula3 = this.crearHTMLButtonElement("btCedula3", {
       onclick: () => this.grabarEstudiante(+this.btCedula3.innerHTML),
+      refresh: () => (this.btCedula3.disabled = Boolean(this.estudiante3?.id)),
     });
     this.btEliminar3 = this.crearHTMLButtonElement("btEliminar3", {
       onclick: () => this.eliminarEstudiante(+this.btCedula3.innerHTML),
@@ -80,6 +83,7 @@ export default class Cl_vEquipos extends Cl_vGeneral {
     }) as HTMLLabelElement;
     this.btCedula4 = this.crearHTMLButtonElement("btCedula4", {
       onclick: () => this.grabarEstudiante(+this.btCedula4.innerHTML),
+      refresh: () => (this.btCedula4.disabled = Boolean(this.estudiante4?.id)),
     });
     this.btEliminar4 = this.crearHTMLButtonElement("btEliminar4", {
       onclick: () => this.eliminarEstudiante(+this.btCedula4.innerHTML),
@@ -94,6 +98,7 @@ export default class Cl_vEquipos extends Cl_vGeneral {
     }) as HTMLLabelElement;
     this.btCedula5 = this.crearHTMLButtonElement("btCedula5", {
       onclick: () => this.grabarEstudiante(+this.btCedula5.innerHTML),
+      refresh: () => (this.btCedula5.disabled = Boolean(this.estudiante5?.id)),
     });
     this.btEliminar5 = this.crearHTMLButtonElement("btEliminar5", {
       onclick: () => this.eliminarEstudiante(+this.btCedula5.innerHTML),
