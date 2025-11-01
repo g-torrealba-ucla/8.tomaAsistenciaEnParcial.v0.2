@@ -5,7 +5,7 @@ export default class Cl_controlador {
     }
     grabarEstudiante({ cedula, callback, }) {
         let estudiante = this.estudiante(cedula);
-        if (!estudiante || estudiante.id)
+        if (!estudiante)
             return;
         this.modelo.grabarEstudiante({
             estudiante,

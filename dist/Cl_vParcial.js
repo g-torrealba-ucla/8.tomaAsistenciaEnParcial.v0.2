@@ -11,9 +11,16 @@ export default class Cl_vEquipos extends Cl_vGeneral {
             refresh: () => { },
             oninput: () => this.actualizarBotones(),
         });
+        this.btBorrarCedula = this.crearHTMLButtonElement("btBorrarCedula", {
+            onclick: () => {
+                this.inCedulaBuscar.value = "";
+                this.actualizarBotones();
+            },
+            refresh: () => (this.btBorrarCedula.hidden = !this.cedula),
+        });
         this.btCedula1 = this.crearHTMLButtonElement("btCedula1", {
             onclick: () => this.grabarEstudiante(+this.btCedula1.innerHTML),
-            refresh: () => { var _a; return (this.btCedula1.disabled = Boolean((_a = this.estudiante1) === null || _a === void 0 ? void 0 : _a.id)); },
+            //      refresh: () => (this.btCedula1.disabled = Boolean(this.estudiante1?.id)),
         });
         this.btEliminar1 = this.crearHTMLButtonElement("btEliminar1", {
             onclick: () => this.eliminarEstudiante(+this.btCedula1.innerHTML),

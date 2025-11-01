@@ -1,4 +1,4 @@
-import Cl_dcytDb from "https://gtplus.net/forms2/dcytDb/api/Cl_dcytDb.php?v2";
+import Cl_dcytDb from "https://gtplus.net/forms2/dcytDb/api/Cl_dcytDb.php?v251027-1820";
 import { iEstudiante } from "./Cl_mEstudiante.js";
 import Cl_mEstudiante from "./Cl_mEstudiante.js";
 import { dtEstudiantes } from "./data/dtEstudiantes.js";
@@ -31,9 +31,10 @@ export default class Cl_mParcial {
     );
   }
   grabarEstudiante({ estudiante, callback }: iGrabarEstudiante): void {
-    if (!estudiante || estudiante.id) callback?.("El estudiante ya existe");
+    if (!estudiante) callback?.("El estudiante ya existe");
     this.db.addRecord({
       tabla: this.tbEstudiante,
+      registroAlias: estudiante.cedula.toString(),
       object: estudiante.toJSON(),
       callback: ({ id, objects, error }) => {
         if (!error) this.setParcial(objects);

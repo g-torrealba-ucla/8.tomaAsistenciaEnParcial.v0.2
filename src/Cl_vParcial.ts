@@ -4,6 +4,7 @@ import { dtEstudiantes } from "./data/dtEstudiantes.js";
 
 export default class Cl_vEquipos extends Cl_vGeneral {
   private inCedulaBuscar: HTMLInputElement;
+  private btBorrarCedula: HTMLButtonElement;
   private btCedula1: HTMLButtonElement;
   private btEliminar1: HTMLButtonElement;
   private btConsultar1: HTMLButtonElement;
@@ -36,9 +37,16 @@ export default class Cl_vEquipos extends Cl_vGeneral {
       refresh: () => {},
       oninput: () => this.actualizarBotones(),
     });
+    this.btBorrarCedula = this.crearHTMLButtonElement("btBorrarCedula", {
+      onclick: () => {
+        this.inCedulaBuscar.value = "";
+        this.actualizarBotones();
+      },
+      refresh: () => (this.btBorrarCedula.hidden = !this.cedula),
+    });
     this.btCedula1 = this.crearHTMLButtonElement("btCedula1", {
       onclick: () => this.grabarEstudiante(+this.btCedula1.innerHTML),
-      refresh: () => (this.btCedula1.disabled = Boolean(this.estudiante1?.id)),
+      //      refresh: () => (this.btCedula1.disabled = Boolean(this.estudiante1?.id)),
     }) as HTMLButtonElement;
     this.btEliminar1 = this.crearHTMLButtonElement("btEliminar1", {
       onclick: () => this.eliminarEstudiante(+this.btCedula1.innerHTML),
